@@ -11,197 +11,144 @@ from keras import layers
 
 # STEP 2: load the model, and test it briefly
 # loading the model from file, see that you also have the folder correctly
-model = keras.saving.load_model('mobilephoneprice.keras')
+model = keras.saving.load_model('Dataset1.keras')
 
 print("Testing")
 
-# # test the model with existing code from ann_classification_example1
-# # let's try with some new imaginary data
-# # modify this as needed regarding your own dataset
-# tester_row = {
-#     'battery_power': 1000, 
-#     'dual_sim': 0 ,
-#     'fc': 4, 
-#     'int_memory': 4, 
-#     'n_cores': 1, 
-#     'pc': 4,
-#     'px_height': 900,
-#     'px_width': 1200, 
-#     'ram': 2096, 
-#     'sc_h': 7, 
-#     'sc_w': 4, 
-#     'talk_time': 12
-# }
 
-# # convert to pandas-format
-# tester_row = pd.DataFrame([tester_row])
-# result = model.predict(tester_row)[0]
-# result_index = np.argmax(result)
-
-# categories = ['1: Cheap', '2: Avg-', '3: Avg+', '4: Expensive']
-
-# # print the actual name with this index
-# result_text = categories[result_index]
-
-# # print the result
-# print(f"Predicted price range: {result_text}")
-
-# STEP 3: create a window application with tkinter
-# - how to make buttons, textboxes etc.
-# - how to make the button to do something if it's clicked
-# - how to connect textboxes into our Keras model
-
-# we're going to use and modify this example:
-# https://www.geeksforgeeks.org/how-to-set-text-of-tkinter-text-widget-with-a-button/
-
-# Import the tkinter module
 import tkinter
  
 # Creating the GUI window.
 window = tkinter.Tk()
-window.title("Deep learning GUI - Ultimate version 1.034bc")
+window.title("Deep learning GUI")
 window.geometry("800x800")
 window.option_add("*font", "lucida 12 bold")
  
-#     'battery_power': 1000, 
-#     'dual_sim': 0 ,
-#     'fc': 4, 
-#     'int_memory': 4, 
-#     'n_cores': 1, 
-#     'pc': 4,
-#     'px_height': 900,
-#     'px_width': 1200, 
-#     'ram': 2096, 
-#     'sc_h': 7, 
-#     'sc_w': 4, 
-#     'talk_time': 12
+#    'national_rank': 20,
+#    'quality_of_education': 300,
+#    'alumni_employment': 300,
+#    'quality_of_faculty': 200,
+#    'publications': 175,
+#    'influence': 500,
+#    'citations': 160,
+#    'broad_impact': 500,
+#    'patents': 500,
+#    'score': 150,
+#    'year': 2015
 
 # make a text label for the first Entry
-label1 = tkinter.Label(window, text="Battery power (mAh)")
+label1 = tkinter.Label(window, text="National rank")
 label1.pack(pady=4)
 
 # Creating our text widget.
-entry_battery = tkinter.Entry(window)
-entry_battery.pack(pady=0)
+entry_nat_rank = tkinter.Entry(window)
+entry_nat_rank.pack(pady=0)
 
 # make a text label for the first Entry
-label2 = tkinter.Label(window, text="Dual SIM (0/1)")
+label2 = tkinter.Label(window, text="Quality of education")
 label2.pack(pady=4)
 
 # Creating our text widget.
-entry_dualsim = tkinter.Entry(window)
-entry_dualsim.pack(pady=0)
+entry_quality = tkinter.Entry(window)
+entry_quality.pack(pady=0)
 
 # make a text label for the first Entry
-label3 = tkinter.Label(window, text="Front cam (mpx)")
+label3 = tkinter.Label(window, text="Alumni employment")
 label3.pack(pady=4)
 
 # Creating our text widget.
-entry_frontcam = tkinter.Entry(window)
-entry_frontcam.pack(pady=0)
+entry_empl = tkinter.Entry(window)
+entry_empl.pack(pady=0)
 
 # make a text label for the first Entry
-label4 = tkinter.Label(window, text="Internal memory / storage (Gb)")
+label4 = tkinter.Label(window, text="Quality of faculty")
 label4.pack(pady=4)
 
 # Creating our text widget.
-entry_intmemory = tkinter.Entry(window)
-entry_intmemory.pack(pady=0)
+entry_qual_of_fac = tkinter.Entry(window)
+entry_qual_of_fac.pack(pady=0)
 
 # make a text label for the first Entry
-label5 = tkinter.Label(window, text="Amount of cores")
+label5 = tkinter.Label(window, text="Publications")
 label5.pack(pady=4)
 
 # Creating our text widget.
-entry_cores = tkinter.Entry(window)
-entry_cores.pack(pady=0)
+entry_publications = tkinter.Entry(window)
+entry_publications.pack(pady=0)
 
 # make a text label for the first Entry
-label6 = tkinter.Label(window, text="Primary camera (mpx)")
+label6 = tkinter.Label(window, text="Influence")
 label6.pack(pady=4)
 
 # Creating our text widget.
-entry_primarycam= tkinter.Entry(window)
-entry_primarycam.pack(pady=0)
+entry_influence= tkinter.Entry(window)
+entry_influence.pack(pady=0)
 
 # make a text label for the first Entry
-label7 = tkinter.Label(window, text="Height (px)")
+label7 = tkinter.Label(window, text="Citations")
 label7.pack(pady=4)
 
 # Creating our text widget.
-entry_pixelh = tkinter.Entry(window)
-entry_pixelh.pack(pady=0)
+entry_citations = tkinter.Entry(window)
+entry_citations.pack(pady=0)
 
 # make a text label for the first Entry
-label8 = tkinter.Label(window, text="Width (px)")
+label8 = tkinter.Label(window, text="Broad impact")
 label8.pack(pady=4)
 
 # Creating our text widget.
-entry_pixelw = tkinter.Entry(window)
-entry_pixelw.pack(pady=0)
+entry_impact = tkinter.Entry(window)
+entry_impact.pack(pady=0)
 
 # make a text label for the first Entry
-label9 = tkinter.Label(window, text="RAM (Mb)")
+label9 = tkinter.Label(window, text="Patents")
 label9.pack(pady=4)
 
 # Creating our text widget.
-entry_ram = tkinter.Entry(window)
-entry_ram.pack(pady=0)
+entry_patents = tkinter.Entry(window)
+entry_patents.pack(pady=0)
 
 # make a text label for the first Entry
-label10 = tkinter.Label(window, text="Screen height (cm)")
+label10 = tkinter.Label(window, text="Score")
 label10.pack(pady=4)
 
 # Creating our text widget.
-entry_screenh = tkinter.Entry(window)
-entry_screenh.pack(pady=0)
+entry_score = tkinter.Entry(window)
+entry_score.pack(pady=0)
 
 # make a text label for the first Entry
-label11 = tkinter.Label(window, text="Screen width (cm)")
+label11 = tkinter.Label(window, text="Year")
 label11.pack(pady=4)
 
 # Creating our text widget.
-entry_screenw = tkinter.Entry(window)
-entry_screenw.pack(pady=0)
+entry_year = tkinter.Entry(window)
+entry_year.pack(pady=0)
 
-# make a text label for the first Entry
-label12 = tkinter.Label(window, text="Talk time (hours)")
-label12.pack(pady=4)
-
-# Creating our text widget.
-entry_talktime = tkinter.Entry(window)
-entry_talktime.pack(pady=0)
 
 # Creating the function to set the text 
 # with the help of button
 def set_text_by_button():
     tester_row = {
-        'battery_power': int(entry_battery.get()), 
-        'dual_sim': int(entry_dualsim.get()) ,
-        'fc': int(entry_frontcam.get()), 
-        'int_memory': int(entry_intmemory.get()), 
-        'n_cores': int(entry_cores.get()), 
-        'pc': int(entry_primarycam.get()),
-        'px_height': int(entry_pixelh.get()),
-        'px_width': int(entry_pixelw.get()), 
-        'ram': int(entry_ram.get()), 
-        'sc_h': int(entry_screenh.get()), 
-        'sc_w': int(entry_screenw.get()), 
-        'talk_time': int(entry_talktime.get())
+        'battery_power': int(entry_nat_rank.get()), 
+        'dual_sim': int(entry_quality.get()) ,
+        'fc': int(entry_empl.get()), 
+        'int_memory': int(entry_qual_of_fac.get()), 
+        'n_cores': int(entry_publications.get()), 
+        'pc': int(entry_influence.get()),
+        'px_height': int(entry_citations.get()),
+        'px_width': int(entry_impact.get()), 
+        'ram': int(entry_patents.get()), 
+        'sc_h': int(entry_score.get()), 
+        'sc_w': int(entry_year.get()), 
     }
 
     # convert to pandas-format
     tester_row = pd.DataFrame([tester_row])
     result = model.predict(tester_row)[0]
-    result_index = np.argmax(result)
-
-    categories = ['1: Cheap', '2: Avg-', '3: Avg+', '4: Expensive']
-
-    # print the actual name with this index
-    result_text = categories[result_index]
+    result = result.round(0)
 
     # print the result
-    result_string.set(f"Predicted price range: {result_text}")
+    result_string.set(f"Predicted World rank: {result}")
  
  
 # Setting up the button, set_text_by_button() 
